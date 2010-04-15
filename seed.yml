@@ -1,0 +1,6 @@
+---
+  name: nodered
+  description: an extensible, scalable, cluster of nodes
+  tags: redis pubsub
+  version: 0.0.8
+
