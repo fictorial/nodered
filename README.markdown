@@ -13,19 +13,15 @@ Applications that might be a good fit for NodeRed are chat, PUBSUB, and game
 servers.  Any "real-time" app that may need to scale out may be a good fit 
 for NodeRed.
 
-Extensions are trusted (*its your deployment*) written in Javascript, run under
-Node.js, and have full access to do as they please.  Be aware that Node.js is
-single threaded; you can certainly have long-running request handlers know that
-such will block the processing of other requests.
+Extensions are trusted (*its your deployment*), written in Javascript, run
+under Node.js, and have full access to do as they please.  Be aware that
+Node.js is single threaded; you can certainly have long-running request
+handlers but know that such will block the processing of other requests.
 
 You do not need to use Redis as your app's datastore.  NodeRed simply uses
 Redis for bookkeeping and inter-node communications (PUBSUB).
 
-## Ideas for scaling out
-
 ![NodeRed Scaling Out](http://github.com/fictorial/nodered/raw/master/doc/assets/NodeRedScaleOut.png)
-
-## Metadata
 
 - Brian Hammond [http://fictorial.com](http://fictorial.com)
 - Copyright (C) 2010 Fictorial LLC
