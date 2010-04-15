@@ -29,6 +29,7 @@ A HASH with the following keys:
 - `name`: string; name of the node
 - `id`: integer; node ID
 - `version`: string; NodeRed version ("x.y.z")
+- `nodejsVersion`: string; Node.js version (e.g. "v0.1.90-27-g9cf2a02")
 - `upSince`: integer; UNIX epoch timestamp
 - `clientCount`: integer; Spans all transports
 - `$transport`: string; "host:port"
