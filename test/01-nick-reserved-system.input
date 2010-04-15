@@ -1,0 +1,5 @@
+# *system* is reserved for sending presence (join/part) 
+# notices and nick-change notices in channels.
+# While this is an error, it's non-fatal.
+[1,"nick","*system*"]
+[2,"quit"]

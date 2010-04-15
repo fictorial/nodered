@@ -1,0 +1,5 @@
+[ 0, "NICK", "Brian" ]
+[ 1, "SUB", "Foobar" ]
+# Should see "Brian" in the output.
+[ 2, "WHO", "Foobar" ]
+[ 3, "QUIT" ]

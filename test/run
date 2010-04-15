@@ -1,0 +1,15 @@
+#!/bin/sh
+
+testhost=127.0.0.1
+testport=8080
+
+for test in *.input
+do
+  echo
+  echo =================================================
+  echo test file: $test
+  echo =================================================
+  cat $test | grep -v -e '^#' -e '^$' > /tmp/current_test.input 
+  cat /tmp/current_test.input | sed 's/^/<-- /'
+  ncat -C $testhost $testport < /tmp/current_test.input | sed 's/^/--> /'
+done

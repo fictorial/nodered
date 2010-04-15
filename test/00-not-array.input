@@ -1,0 +1,2 @@
+# The correct form is [ requestID, "commandName", ... ]
+{ requestID: 0, command: "LOCAL" }

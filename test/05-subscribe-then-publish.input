@@ -1,0 +1,4 @@
+[ 0, "NICK", "Brian" ]
+[ 1, "SUB", "Foobar" ]
+[ 2, "PUB", "Foobar", "Hello!" ]
+[ 3, "QUIT" ]

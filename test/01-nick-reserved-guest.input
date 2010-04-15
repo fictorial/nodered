@@ -1,0 +1,4 @@
+# Guest-* are reserved and issued on login
+# Note that while this fails, it's non-fatal
+[1,"nick","Guest-1000"]
+[2,"quit"]

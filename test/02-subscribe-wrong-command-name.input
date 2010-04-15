@@ -1,0 +1,6 @@
+[ 0, "NICK", "Brian" ]
+
+# It's "SUB" not "SUBSCRIBE" :)
+[ 1, "SUBSCRIBE", "Foobar" ]
+
+[ 2, "QUIT" ]
