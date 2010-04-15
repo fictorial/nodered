@@ -1,4 +1,0 @@
-NODERED_DEBUG=1 bin/nodered-run \
-  --transport=tcp://127.0.0.1:8081 \
-  --redis="127.0.0.1:6379/1?debug=off" \
-  --name=bar
