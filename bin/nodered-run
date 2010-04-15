@@ -78,6 +78,7 @@ logger.info("MAIN/TRANSPORTS  " + options.transports.map(
   function (t) { 
     return t.name 
   }).join(', '));
+logger.info("MAIN/NODEJS " + process.version);
 logger.info("MAIN/REDIS  " + JSON.stringify(options.redis));
 
 pubsub.initRedisClients(options.redis, function () {
@@ -121,6 +122,7 @@ pubsub.initRedisClients(options.redis, function () {
       pubsub.controlClient.hset(key, 'name', NODE_NAME, this.MULTI());
       pubsub.controlClient.hset(key, 'id', NODE_ID, this.MULTI());
       pubsub.controlClient.hset(key, 'version', config.VERSION, this.MULTI());
+      pubsub.controlClient.hset(key, 'nodejsVersion', process.version, this.MULTI());
       pubsub.controlClient.hset(key, 'upSince', now, this.MULTI());
       pubsub.controlClient.hset(key, 'clientCount', '0', this.MULTI());
 
