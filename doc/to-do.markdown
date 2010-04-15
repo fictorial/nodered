@@ -1,4 +1,7 @@
-- periodically write memory usage to redis for the node
+
+- expose more node metadata
+    - list the extensions loaded
+    - periodically write memory usage to redis for the node
 
 # protocol extensions
 
@@ -8,5 +11,6 @@
 
 # transports
 
+- support options from the command-line and pass in to the transport
+    - `--transport=$name://ip:port?$key=$val&$key=$val...`
 - add websockets support
-
