@@ -202,8 +202,13 @@ function shutdown() {
         for (var i=0, n=nicks.length; i<n; ++i) {
           var client = theController.clients[nicks[i]];
 
-          if (!client.stream.writable)
+          if (!client.stream.writable) {
+            logger.debug("MAIN/SHUTDOWN  " + client.nickname + "@" + 
+              client.stream.remoteAddress + " is not writable.");
+
+            this.MULTI()();
             continue;
+          }
 
           if (client.stream.write(serializedMessage, "utf8")) {
             if (DEBUG) {
