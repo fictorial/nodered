@@ -12,7 +12,7 @@ to NodeRed.  The `-->` lines indicate replies and notifications
 sent by NodeRed.
 
     $ bin/nodered-run --name=testing --transport=tcp://127.0.0.1:8080 &
-    $ cd tests/
+    $ cd test/functional
     $ ./run
 
     =================================================
