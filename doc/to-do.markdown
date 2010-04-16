@@ -1,8 +1,3 @@
-- client in changeNick has no subs
-- afterwards, when subscribing to another, the original is there
-- something weird is happening with the client object passed to changeNick
-- once this is resolved, consider the problem with this.failed in the rename nick flow
-
 - return the generated nickname as a system message on connection
 
 - expose more node metadata
