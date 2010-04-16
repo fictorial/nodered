@@ -233,9 +233,9 @@
                  , msg:message.msg.part + " parted."
                  , channel:channel
                  });
-        } else if (message.msg.nick) {
+        } else if (message.msg.rename) {
           output({ status:true
-                 , msg:message.msg.nick[0] + " is now known as " + message.msg.nick[1] + "."
+                 , msg:message.msg.rename[0] + " is now known as " + message.msg.rename[1] + "."
                  , channel:channel
                  });
         }
