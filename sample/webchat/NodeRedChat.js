@@ -78,17 +78,18 @@
         }
 
         try {
-          client.setNickname(nick, function (ok) {
-            if (!ok) 
+          client.setNickname(nick, function (ok, reply) {
+            if (!ok) {
               output({ error:true
-                     , msg:"failed to set nick"
+                     , msg:"failed to set nick" + (reply.msg ? ": " + reply.msg : "")
                      });
+            } else {
+              client.nick = nick;
 
-            client.nick = nick;
-
-            output({ status:true
-                   , msg:"nick changed ok"
-                   });
+              output({ status:true
+                     , msg:"nick changed ok"
+                     });
+            }
           });
         } catch (e) {
           dump(e);
