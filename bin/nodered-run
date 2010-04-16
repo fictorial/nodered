@@ -205,7 +205,7 @@ function shutdown() {
           var client = theController.clients[nicks[i]];
 
           if (!client.stream.writable) {
-            logger.debug("MAIN/SHUTDOWN  " + client.nickname + "@" + 
+            logger.warn("MAIN/SHUTDOWN  " + client.nickname + "@" + 
               client.stream.remoteAddress + " is not writable.");
 
             this.MULTI()();
@@ -213,14 +213,15 @@ function shutdown() {
           }
 
           if (client.stream.write(serializedMessage, "utf8")) {
-            if (DEBUG) {
-              logger.debug("MAIN/SHUTDOWN  " + client.nickname + "@" + 
-                client.stream.remoteAddress + " sent shutdown notice.");
-            }
+            logger.warn("MAIN/SHUTDOWN  " + client.nickname + "@" + 
+              client.stream.remoteAddress + " sent shutdown notice.");
 
             client.stream.end();
             this.MULTI()();
           } else {
+            logger.warn("MAIN/SHUTDOWN  " + client.nickname + "@" + 
+              client.stream.remoteAddress + " buffer full... waiting");
+
             toDrain++;
             client.stream.addListener('drain', function () {
               toDrain--;
