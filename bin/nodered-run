@@ -117,7 +117,7 @@ pubsub.initRedisClients(options.redis, function () {
       }
 
       var key = 'nr:cluster:' + NODE_ID;
-      var now = (new Date()).getTime().toString();
+      var now = Date.now();
 
       pubsub.controlClient.hset(key, 'name', NODE_NAME, this.MULTI());
       pubsub.controlClient.hset(key, 'id', NODE_ID, this.MULTI());
