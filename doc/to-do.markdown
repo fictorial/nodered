@@ -1,4 +1,3 @@
-
 - expose more node metadata
     - list the extensions loaded
     - periodically write memory usage to redis for the node
