@@ -1,0 +1,102 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: Optima, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 1em;
+  text-shadow: #aaa 0px 2px 4px;
+}
+
+form {
+  background-color: #def;
+  color: #789;
+  padding: 0.5em;
+  padding-left: 1em;
+}
+
+#forms {
+  border-bottom: 3px solid #bcd;
+}
+
+#forms input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #789;
+  padding: 3px;
+}
+
+#logo {
+  max-width: 128px;
+  position: absolute;
+  top: -100px;
+  right: 0;
+}
+
+#messages {
+  margin: 0;
+  margin-top: 3em;
+  padding: 1em;
+  border: 2px solid #999;
+  border-left: none;
+  border-right: none;
+  background-color: #eee;
+  color: #555;
+}
+
+.message {
+  margin: 0;
+  padding: 0;
+}
+
+.payload {
+  margin-left: 0.25em;
+}
+
+.status {
+  color: #789;
+}
+
+.status:before {
+  content: "** "
+}
+
+.error {
+  color: #d00;
+  font-weight: bold;
+}
+
+.time {
+  padding-right: 0.25em;
+  margin-right: 0.25em;
+  border-right: 2px solid #aaa;
+}
+
+.channel {
+}
+
+.channel:before {
+  content: "[";
+}
+
+.channel:after {
+  content: "]";
+}
+
+.nick {
+  color: #f80;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+
+.nick:before {
+  content: "<";
+}
+
+.nick:after {
+  content: ">";
+}
+

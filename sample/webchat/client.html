@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <title>NodeRed Chat Sample Using WebSockets</title>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script src="NodeRedClient.js"></script>
+    <script src="NodeRedChat.js"></script>
+  </head>
+  <body>
+    <h1>NodeRed Chat Sample Using WebSockets</h1>
+    <img id="logo" src="../../doc/assets/NodeRedLogo.png" alt="Logo" title="Logo" />
+    <div id="messages"></div>
+    <div id="forms">
+      <form id="nickForm" >
+        set nickname to 
+        <input id="nick" size="20" maxsize="20" />.
+      </form>
+      <form id="publishForm" >
+        publish <input id="publishPayload" size="20" maxsize="100" />
+        to <input id="publishChannel" size="20" maxsize="100" />.
+      </form>
+      <form id="subscribeForm" >
+        subscribe to <input id="subscribeChannel" size="20" maxsize="100" />.
+      </form>
+    </div>
+  </body>
+</html>
