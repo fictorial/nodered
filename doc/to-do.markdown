@@ -14,3 +14,9 @@
 - support options from the command-line and pass in to the transport
     - `--transport=$name://ip:port?$key=$val&$key=$val...`
 - add websockets support
+
+# samples
+
+- real-time twitter; idea from the "faye" project. pick a nick and 
+  enter usernames to follow. messages from those usernames show up
+  immediately.
