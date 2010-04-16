@@ -1,3 +1,9 @@
+- for some reason the exception thrown when a rename fails due to an 
+  in-use nickname is not being caught even though there it's in a try..catch
+  block!  something to do with flow-js?
+
+- return the generated nickname as a system message on connection
+
 - expose more node metadata
     - list the extensions loaded
     - periodically write memory usage to redis for the node
@@ -12,7 +18,6 @@
 
 - support options from the command-line and pass in to the transport
     - `--transport=$name://ip:port?$key=$val&$key=$val...`
-- add websockets support
 
 # samples
 
