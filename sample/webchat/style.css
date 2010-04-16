@@ -14,19 +14,12 @@ h1 {
 form {
   background-color: #def;
   color: #789;
-  padding: 0.5em;
+  padding: 0.25em;
   padding-left: 1em;
 }
 
 #forms {
   border-bottom: 3px solid #bcd;
-}
-
-#forms input {
-  background: none;
-  border: none;
-  border-bottom: 1px solid #789;
-  padding: 3px;
 }
 
 #logo {
