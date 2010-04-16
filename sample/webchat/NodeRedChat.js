@@ -183,7 +183,7 @@
     });
     
     client.onConnect = function () {
-      $('#publishForm').show("slow");
+      $('#forms').slideDown("slow");
 
       output({ status:true
              , msg:"connected"
@@ -214,7 +214,7 @@
     };
     
     client.onDisconnect = function () {
-      $('#publishForm').slideUp("slow");
+      $('#forms').slideUp("slow");
 
       output({ error:true
              , msg:"not connected to server"
