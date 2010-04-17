@@ -25,8 +25,7 @@ There must be at least one transport enabled, but multiple transports can be
 enabled.  The currently defined `protocol` values are:
 
 - `tcp`
-
-A transport based on HTML5 WebSockets is forthcoming.
+- `ws`
 
 ## OPTIONS
 
