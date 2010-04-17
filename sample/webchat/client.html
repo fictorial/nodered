@@ -10,21 +10,20 @@
     <script src="NodeRedChat.js"></script>
   </head>
   <body>
-    <h1>NodeRed Chat Sample Using WebSockets</h1>
     <img id="logo" src="../../doc/assets/NodeRedLogo.png" alt="Logo" title="Logo" />
-    <div id="messages"></div>
     <div id="forms" style="display:none">
       <form id="nickForm" >
         set nickname to 
-        <input id="nick" size="20" maxsize="20" />.
+        <input id="nick" size="20" maxsize="20" />
       </form>
       <form id="publishForm" >
         publish <input id="publishPayload" size="20" maxsize="100" />
-        to <input id="publishChannel" size="20" maxsize="100" />.
+        to <input id="publishChannel" size="20" maxsize="100" />
       </form>
       <form id="subscribeForm" >
-        subscribe to <input id="subscribeChannel" size="20" maxsize="100" />.
+        subscribe to <input id="subscribeChannel" size="20" maxsize="100" />
       </form>
     </div>
+    <div id="messages"></div>
   </body>
 </html>

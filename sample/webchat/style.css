@@ -1,25 +1,10 @@
 body {
-  background-color: #fff;
-  color: #000;
-  font-family: Optima, sans-serif;
+  background-color: #382B42;
+  color: #A35F44;
+  font-family: 'Lucida Grande', sans-serif;
+  font-size: x-large;
   margin: 0;
   padding: 0;
-}
-
-h1 {
-  margin: 1em;
-  text-shadow: #aaa 0px 2px 4px;
-}
-
-form {
-  background-color: #def;
-  color: #789;
-  padding: 0.25em;
-  padding-left: 1em;
-}
-
-#forms {
-  border-bottom: 3px solid #bcd;
 }
 
 #logo {
@@ -29,15 +14,24 @@ form {
   right: 0;
 }
 
-#messages {
-  margin: 0;
-  margin-top: 3em;
+#forms {
+  color: #EFBFAC;
+  font-size: small;
+  font-weight: bold;
   padding: 1em;
-  border: 2px solid #999;
-  border-left: none;
-  border-right: none;
-  background-color: #eee;
-  color: #555;
+  text-align: center;
+}
+
+form {
+  padding-right: 2em;
+  margin-right: 0.5em;
+  display: inline;
+}
+
+#messages {
+  background-color: #5E3042;
+  color: #E8773C;
+  padding: 1em;
 }
 
 .message {
@@ -47,10 +41,11 @@ form {
 
 .payload {
   margin-left: 0.25em;
+  color: #74AE94;
 }
 
 .status {
-  color: #789;
+  color: #D69844;
 }
 
 .status:before {
@@ -58,14 +53,14 @@ form {
 }
 
 .error {
-  color: #d00;
+  color: #B04144;
   font-weight: bold;
 }
 
 .time {
   padding-right: 0.25em;
   margin-right: 0.25em;
-  border-right: 2px solid #aaa;
+  border-right: 2px solid #B08141;
 }
 
 .channel {

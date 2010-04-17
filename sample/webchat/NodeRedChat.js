@@ -55,7 +55,7 @@
     $(document).ready(function() {
       client.connect("localhost", 8080);
 
-      $('#logo').animate({ top:0, right:0 }, 3000);
+      $('#logo').animate({ top:40, right:0 }, 3000);
       $('#nick').focus();
 
       $('#nickForm').submit(function () {
