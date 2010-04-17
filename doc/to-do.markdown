@@ -17,6 +17,32 @@
 
 # samples
 
-- real-time twitter; idea from the "faye" project. pick a nick and 
-  enter usernames to follow. messages from those usernames show up
-  immediately.
+## text chat
+
+- show list of available channels in a list
+- show who is subscribed to the selected channel
+- publish to selected channel and remove the "to" input box in the publish form
+- use default text for the form input fields
+- make an inverse logo so it shows up better 
+- put each channel in its own tab
+
+## video chat
+
+- stress test; probably a very bad idea
+- grab images from webcam using flash (jquery plugin) and publish the captured frames as messages
+    - will require base64 encoding (!) the frames
+
+## games
+
+- a million ideas
+
+## collaborative document editing
+
+- upload a doc; get a uri back
+- share uri with friend over im or whatever
+- send keystrokes to each other on a channel dedicated to that doc
+
+## irc relay
+
+- just to show you can, not realistic to have 1 proxy for N users  
+
