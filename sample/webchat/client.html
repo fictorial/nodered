@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>NodeRed Chat Sample Using WebSockets</title>
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/sunny/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
@@ -10,18 +10,23 @@
     <script src="NodeRedChat.js"></script>
   </head>
   <body>
-    <img id="logo" src="../../doc/assets/NodeRedLogo.png" alt="Logo" title="Logo" />
+    <a href="" id="about">?</a>
+    <div id="about-dialog" style="display:none">
+      <p>A simple text chat sample.</p>
+      <p><a target="_blank" href="http://github.com/fictorial/nodered/tree/master/sample/webchat/">(source code)</a></p>
+      <img src="../../doc/assets/PoweredByNodeRed.png" alt="Logo" title="Logo" />
+    </div>
     <div id="forms" style="display:none">
       <form id="nickForm" >
         set nickname to 
         <input id="nick" size="20" maxsize="20" />
       </form>
+      <form id="subscribeForm" >
+        subscribe to channel <input id="subscribeChannel" size="20" maxsize="100" />
+      </form>
       <form id="publishForm" >
         publish <input id="publishPayload" size="20" maxsize="100" />
-        to <input id="publishChannel" size="20" maxsize="100" />
-      </form>
-      <form id="subscribeForm" >
-        subscribe to <input id="subscribeChannel" size="20" maxsize="100" />
+        to channel <input id="publishChannel" size="20" maxsize="100" />
       </form>
     </div>
     <div id="messages"></div>

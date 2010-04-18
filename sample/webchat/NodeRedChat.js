@@ -19,7 +19,7 @@
         , nowStr = hour + ":" + (minutes < 10 ? "0" + minutes.toString() : minutes);
 
       var html = 
-        '<div class="message">' + 
+        '<div class="message" style="display:none">' + 
         '<span class="time">' + nowStr + '</span>';
 
       if (options.channel)
@@ -47,7 +47,9 @@
 
       html += '</div>';
 
-      $('#messages').append($(html));
+      var p = $(html);
+      $('#messages').append(p);
+      $(p).fadeIn("slow");
     }
 
     var client = new NodeRedClient();
@@ -55,8 +57,16 @@
     $(document).ready(function() {
       client.connect("localhost", 8080);
 
-      $('#logo').animate({ top:40, right:0 }, 3000);
-      $('#nick').focus();
+      $('#about').click(function() {
+        $('#about-dialog').dialog({
+          title:"About NodeRed Chat",
+          width:500,
+          height:500,
+          modal:true,
+          resizable:false
+        });
+        return false;
+      });
 
       $('#nickForm').submit(function () {
         var nick = strip($.trim($('#nick').val()));
@@ -86,9 +96,9 @@
             } else {
               client.nick = nick;
 
-              output({ status:true
-                     , msg:"nick changed ok"
-                     });
+              $('#nick').val(nick);
+              $('#nickForm').fadeOut(200);
+              $('#subscribeChannel').focus();
             }
           });
         } catch (e) {
@@ -183,38 +193,42 @@
     });
     
     client.onConnect = function () {
-      $('#forms').slideDown("slow");
-
-      output({ status:true
-             , msg:"connected"
-             });
+      $('#forms').slideDown(1000, function () {
+        $('#nick').focus();
+      });
       
       client.getServerInfo(function (success, reply) {
+        output({ status:true
+              , msg:"connected to nodered node" + 
+                    (reply.name ? " '" + reply.name + "' " : "")
+              });
+
         if (reply.version)
           output({ status:true
-                 , msg:"server version: " + reply.version
+                 , msg:"nodered version on this node: " + reply.version
                  });
 
         if (reply.clients)
           output({ status:true
-                 , msg:"clients connected to this server: " + reply.clients
+                 , msg:(reply.clients-1) + " other client" + 
+                   ((reply.clients-1) > 1 ? "s" : "") + 
+                   " connected to this node"
                  });
       });
 
       client.getClusterInfo(function (success, reply) {
         if (reply instanceof Array) {
-          var verb = reply.length >= 1 ? "is" : "are";
-          var noun = reply.length >= 1 ? "node" : "nodes";
-
           output({ status:true
-                 , msg:"there " + verb + " " + reply.length + " " + noun + " in this cluster."
+                 , msg:reply.length + " node" + 
+                       (reply.length > 1 ? "s" : "") + 
+                       " in the cluster"
                  });
         }
       });
     };
     
     client.onDisconnect = function () {
-      $('#forms').slideUp("slow");
+      $('#forms').slideUp(1000);
 
       output({ error:true
              , msg:"not connected to server"
@@ -225,17 +239,19 @@
       if (channel == SYSTEM_CHANNEL || message.from == SYSTEM_USER) {
         if (message.msg.join) {
           output({ status:true
-                 , msg:message.msg.join + " joined."
+                 , msg:'<span class="nick">' + message.msg.join + '</span> subscribed'
                  , channel:channel
                  });
         } else if (message.msg.part) {
           output({ status:true
-                 , msg:message.msg.part + " parted."
+                 , msg:'<span class="nick">' + message.msg.part + "</span> unsubscribed"
                  , channel:channel
                  });
         } else if (message.msg.rename) {
           output({ status:true
-                 , msg:message.msg.rename[0] + " is now known as " + message.msg.rename[1] + "."
+                 , msg:'<span class="nick">' + message.msg.rename[0] + '</span>' +
+                       " is now known as " + 
+                       '<span class="nick nick2">' + message.msg.rename[1] + "</span>"
                  , channel:channel
                  });
         }
