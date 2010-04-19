@@ -31,14 +31,11 @@ a {
 }
 
 #forms {
+  position: relative;
+  padding: 0.25em;
   background-color: #453625;
   color: #A5A07E;
-  padding: 0.25em;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  border-top: 2px solid #69514A;
+  border-top: 5px solid #69514A;
 }
 
 form input {
@@ -70,13 +67,18 @@ form {
 }
 
 .status {
+  /*
   background-color: #69514A;
   color: #E5DEAF;
+  */
+  font-style: italic;
+}
+
+.status:before {
+  content: "** "
 }
 
 .error {
-  background-color: #E82B1E;
-  color: #E5DEAF;
 }
 
 .time {
@@ -86,6 +88,7 @@ form {
 }
 
 .channel {
+  float: right;
   background-color: #557A66;
   color: #A0B688;
 }
@@ -96,11 +99,14 @@ form {
   margin-right: 0.25em;
 }
 
-.status > .nick {
-  margin-left: -0.25em;
+#currentNick {
+  float: right;
+  color: #A5A07E;
+  padding-top: 0.25em;
+  font-size: small;
 }
 
-.status > .nick2 {
-  margin-left: 0;
-  padding-right: 0.25em;
+.status > .nick {
+  margin-right: 0;
 }
+

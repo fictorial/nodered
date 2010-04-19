@@ -32,7 +32,7 @@
         var msg = options.msg;
         var classes = "payload";
 
-        if (options.error)  classes += " error";
+        if (options.error)  classes += " error ui-state-error";
         if (options.status) classes += " status";
 
         if (options.published) {
@@ -76,6 +76,7 @@
                  , msg:"invalid nickname."
                  });
 
+          $('#nick').addClass('ui-state-error');
           return false;
         }
 
@@ -84,6 +85,7 @@
                  , msg:"invalid nickname - same as current"
                  });
 
+          $('#nick').addClass('ui-state-error');
           return false;
         }
 
@@ -93,12 +95,21 @@
               output({ error:true
                      , msg:"failed to set nick" + (reply.msg ? ": " + reply.msg : "")
                      });
+
+              $('#nick').addClass('ui-state-error');
             } else {
               client.nick = nick;
 
               $('#nick').val(nick);
-              $('#nickForm').fadeOut(200);
-              $('#subscribeChannel').focus();
+              $('#nick').removeClass('ui-state-error');
+              $('#nickForm').slideUp("slow");
+              $('#currentNick').text(nick);
+
+              $('#subscribeForm').slideDown("slow", function () {
+                $('#subscribeChannel').focus();
+              });
+
+              $('#publishForm').slideDown("slow");
             }
           });
         } catch (e) {
@@ -107,6 +118,8 @@
           output({ error:true
                  , msg:"ERROR: " + e
                  });
+
+          $('#nick').addClass('ui-state-error');
         }
 
         return false;
@@ -116,26 +129,36 @@
         var channel = strip($.trim($('#publishChannel').val()))
           , payload = strip($.trim($('#publishPayload').val()));
 
-        if (channel.length == 0) {
-          output({ error:true
-                 , msg:"A channel is required!" 
-                 });
-
-          return false;
-        }
-
         if (payload.length == 0) {
           output({ error:true
                  , msg:"A message is required!" 
                  });
 
+          $('#publishPayload').addClass('ui-state-error');
+          $('#publishPayload').focus();
           return false;
+        } else {
+          $('#publishPayload').removeClass('ui-state-error');
+        }
+
+        if (channel.length == 0) {
+          output({ error:true
+                 , msg:"A channel is required!" 
+                 });
+
+          $('#publishChannel').addClass('ui-state-error');
+          $('#publishChannel').focus();
+          return false;
+        } else {
+          $('#publishChannel').removeClass('ui-state-error');
         }
 
         try {
           client.publish(channel, payload, function (ok) {
             if (ok) {
               $('#publishPayload').val('');
+              $('#publishPayload').removeClass('ui-state-error');
+              $('#publishChannel').removeClass('ui-state-error');
             } else {
               output({ error:true
                      , msg:"Failed to publish message!"
@@ -172,13 +195,22 @@
               // TODO show subscription in a tab?
 
               $('#subscribeChannel').val('');
+              $('#publishChannel').val(channel);
+              $('#publishPayload').focus();
+
+              client.getSubscribersToChannel(channel, function (success, reply) {
+                if (reply instanceof Array && reply.length > 0) {
+                  output({ status:true
+                         , msg:"subscribers to " + channel + ": " + 
+                               reply.map(function (o) { return o.nick; }).join(', ')
+                         });
+                }
+              });
             } else {
               output({ status:true
                      , msg:"failed to subscribe to " + channel
                      });
             }
-
-            $('#subscribeChannel').focus();
           });
         } catch (e) {
           dump(e);
@@ -222,6 +254,14 @@
                  , msg:reply.length + " node" + 
                        (reply.length > 1 ? "s" : "") + 
                        " in the cluster"
+                 });
+        }
+      });
+
+      client.getActiveChannels(function (success, reply) {
+        if (reply instanceof Array && reply.length > 0) {
+          output({ status:true
+                 , msg:"channels with active subscribers: " + reply.join(', ')
                  });
         }
       });
