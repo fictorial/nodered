@@ -61,6 +61,20 @@ via `reply.makeReply(parts)`, and write it to the client.
 `fatal` should serialize `err` as an error reply, write the error
 reply to the client, then close the client connection/stream.
 
+## Transport expectations
+
+The transport should call `controller.clientConnected(client)` when
+a client connects.  This may throw an exception if the client is not
+allowed to connect, the server is too busy, etc.  Catch the exception
+and issue a `fatal(client, {msg: err.message})`.
+
+The transport should call `controller.clientDisconnected(client)` when
+a client disconnects.
+
+The value `controller.inShutdown` will be set to `true` when the node is being
+shutdown.  The transport should not allow further client commands to be
+processed when in "shutdown mode."
+
 ## Learning by example
 
 See the TCP transport in `lib/transports/tcp/index.js` for an example
