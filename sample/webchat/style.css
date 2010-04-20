@@ -5,10 +5,14 @@ body {
   padding: 0;
 }
 
-body, form input {
+body, input {
   font-family: 'Helvetica', sans-serif;
   font-weight: bold;
-  font-size: x-large;
+  font-size: 24px;
+}
+
+input {
+  padding: 0.25em;
 }
 
 a {
@@ -79,6 +83,7 @@ form {
 }
 
 .error {
+  color: #E5DEAF;
 }
 
 .time {

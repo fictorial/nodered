@@ -10,13 +10,11 @@
     }
     
     function output(options) {
-
-      // TODO there an easier way to do this date manipulation?
-
       var now = new Date()
         , minutes = now.getMinutes()
         , hour = Math.max(1, now.getHours() % 12)
-        , nowStr = hour + ":" + (minutes < 10 ? "0" + minutes.toString() : minutes);
+        , nowStr = (hour < 10 ? "0" + hour.toString() : hour) + ":" + 
+                   (minutes < 10 ? "0" + minutes.toString() : minutes);
 
       var html = 
         '<div class="message" style="display:none">' + 
