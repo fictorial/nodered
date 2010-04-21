@@ -15,11 +15,11 @@ access to the [Node.js](http://nodejs.org) [API](http://nodejs.org/api.html).
 
 NodeRed is a good fit for real-time web apps, chat, game servers, etc.
 
-New transports [may be developed easily](http://github.com/fictorial/nodered/raw/master/doc/additional-transports.markdown).
+New transports [may be developed easily](http://github.com/fictorial/nodered/blob/master/doc/additional-transports.markdown).
 
-[The protocol](http://github.com/fictorial/nodered/raw/master/doc/protocol.markdown) is simple.
+[The protocol](http://github.com/fictorial/nodered/blob/master/doc/protocol.markdown) is simple.
 
-[Scaling out](http://github.com/fictorial/nodered/raw/master/doc/assets/NodeRedScaleOut.png) is easy.
+[Scaling out](http://github.com/fictorial/nodered/blob/master/doc/assets/NodeRedScaleOut.png) is easy.
 
 - Brian Hammond [http://fictorial.com](http://fictorial.com)
 - Copyright (C) 2010 Fictorial LLC
