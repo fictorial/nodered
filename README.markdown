@@ -1,27 +1,25 @@
 ![NodeRed Logo](http://github.com/fictorial/nodered/raw/master/doc/assets/NodeRedLogo.png)
 
-NodeRed is an extensible, scalable, cluster of nodes which communicate via
-Redis' PUBSUB features.
+NodeRed is an extensible topic-based [PUBSUB](http://en.wikipedia.org/wiki/Publish/subscribe) 
+server framework for [Node.js](http://nodejs.org) with [Redis](http://code.google.com/p/redis/) 
+in the middle.
 
-NodeRed natively supports PUBSUB over TCP/IP sockets.  However, new transports
-(e.g. HTML5 WebSockets) can be added as extensions easily.  In addition, the
-client-server protocol can be extended with new request types and associated
-handlers (e.g. user authentication).  NodeRed invokes your extensions at the
-right times.  Your app logic hooks into NodeRed. 
+Nodes/servers accept client connections over TCP/IP or HTML5 WebSockets.  Nodes
+*subscribe* to channels/topics in Redis.  Nodes *publish* messages to channels
+by sending a request to Redis, which are then forwarded to all active
+subscribers.
 
-Applications that might be a good fit for NodeRed are chat, PUBSUB, and game
-servers.  Any "real-time" app that may need to scale out may be a good fit 
-for NodeRed.
+NodeRed is a *framework*.  Your app hooks into NodeRed via Javascript
+extensions.  Plug-ins/add-ons/extensions are written in Javascript and have
+access to the [Node.js](http://nodejs.org) [API](http://nodejs.org/api.html).
 
-Extensions are trusted (*its your deployment*), written in Javascript, run
-under Node.js, and have full access to do as they please.  Be aware that
-Node.js is single threaded; you can certainly have long-running request
-handlers but know that such will block the processing of other requests.
+NodeRed is a good fit for real-time web apps, chat, game servers, etc.
 
-You do not need to use Redis as your app's datastore.  NodeRed simply uses
-Redis for bookkeeping and inter-node communications (PUBSUB).
+New transports [may be developed easily](http://github.com/fictorial/nodered/raw/master/doc/additional-transports.markdown).
 
-![NodeRed Scaling Out](http://github.com/fictorial/nodered/raw/master/doc/assets/NodeRedScaleOut.png)
+[The protocol](http://github.com/fictorial/nodered/raw/master/doc/protocol.markdown) is simple.
+
+[Scaling out](http://github.com/fictorial/nodered/raw/master/doc/assets/NodeRedScaleOut.png) is easy.
 
 - Brian Hammond [http://fictorial.com](http://fictorial.com)
 - Copyright (C) 2010 Fictorial LLC
