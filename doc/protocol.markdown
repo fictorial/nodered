@@ -84,7 +84,12 @@ LIST
 
 WHO
 
-    [ id, true, { "channel": [ "nick", ...  ] } ] CRLF
+    [ id, true, [ { "nick": "nick"
+                  , "node": nodeID
+                  }
+                , ...
+                ] 
+    ] CRLF
 
 NICK, SUB, UNSUB, PUB
 

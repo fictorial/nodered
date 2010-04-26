@@ -1,7 +1,3 @@
-- support options from the command-line and pass in to a transport
-    - `'--transport=$name://ip:port?$key=$val&$key=$val...'`
-    - not real URI encoding; just looks like a URI.
-
 - specify docs for hooking into NodeRed events
     - how does an extension ... 
         - ... add a request handler to the dispatcher?
@@ -41,4 +37,3 @@
     - periodically write memory usage to redis for the node
 
 - add support for seed.js packaging
-

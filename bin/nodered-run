@@ -15,7 +15,7 @@ var options = { transports: []
               };
 
 var theController = null
-  , transportUriRegex = /^--transport=['"]?(.+):\/\/(.+):(\d+)\s*$['"]?/
+  , transportUriRegex = /^--transport=['"]?(.+):\/\/(.+):(\d+)(?:\?(.+))?\s*$['"]?/
   , redisUriRegex = /^--redis=['"]?(.+?)(?::(\d+))?(?:\/(\d+))?(?:\?debug=(on|off))?['"]?$/;
 
 process.argv.forEach(function (arg) {
@@ -24,9 +24,22 @@ process.argv.forEach(function (arg) {
   if (match = arg.match(/^--name=(.+)/)) {
     global.NODE_NAME = match[1].trim();
   } else if (match = arg.match(transportUriRegex)) {
+    var kvp = {};
+
+    (match[4] || '').trim().split(/&/).forEach(
+      function (kv) {
+        var m = kv.match(/^(.+?)=(.+)$/);
+        if (!m) {
+          logger.error("MAIN  transport has malformed options: " + arg);
+          process.exit(1);
+        }
+        kvp[m[1]] = m[2];
+      });
+
     options.transports.push({ name: match[1]
                             , ip: match[2]
                             , port: parseInt(match[3], 10) 
+                            , options: kvp
                             });
   } else if (match = arg.match(redisUriRegex)) {
     options.redis.host = match[1];

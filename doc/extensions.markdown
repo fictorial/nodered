@@ -9,17 +9,19 @@ An extension does any of the following:
   client-server language (protocol extensions); 
 - alters the behavior of NodeRed (event hooks)
 
-Extensions are written in Javascript.  Extensions are packaged as Node.js
-modules.  Currently, these modules must be findable via Node.js' `require`.  In
-the future, we might consider using Kiwi.
+Extensions are written in Javascript.  The source to an extension may be loaded
+from Redis or from a Node.js module.  Loading extensions from Redis allows the
+server admin to reload extensions into a running NodeRed server.  Loading
+extensions from Node.js modules is of course more intuitive.
 
-Extensions are fully *trusted* as they are loaded through a private mechanism.
-To be explicit: *NodeRed never accepts Javascript from clients.* Since
-extensions are trusted, they may utilize any and all of Node.js' features and
-APIs.  However, be aware that Node.js is single-threaded.  *No other code runs
-while extension code runs*.  An extension may of course perform long-running,
-blocking operations.  Since *your deployment is your deployment* you have
-control over which extensions are activated, what they do, and how they do it.
+Extensions are fully *trusted* as they are loaded through a private mechanism
+(local modules or your own private Redis deployment).  To be explicit: *NodeRed
+never accepts Javascript from clients.* Since extensions are trusted, they may
+utilize any and all of Node.js' features and APIs.  However, be aware that
+Node.js is single-threaded.  *No other code runs while extension code runs*.
+An extension may of course perform long-running, blocking operations.  Since
+*your deployment is your deployment* you have control over which extensions are
+activated, what they do, and how they do it.
 
 ## Protocol Extensions
 
