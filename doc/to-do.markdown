@@ -10,11 +10,6 @@
 - load from URIs (redis://key, node://module, kiwi://module)
 - example: nick registration and authentication against redis itself
 
-# transports
-
-- support options from the command-line and pass in to the transport
-    - `--transport=$name://ip:port?$key=$val&$key=$val...`
-
 # samples
 
 ## text chat
