@@ -19,7 +19,7 @@
 Each node in a NodeRed cluster must be given a *name* as assigned by you.
 The name is an arbitrary string but must be unique in the cluster.
 
-    --transport=protocol://ip:port
+    '--transport=protocol://ip:port?option0=value0&option1=value1'
 
 There must be at least one transport enabled, but multiple transports can be
 enabled.  The currently defined `protocol` values are:
