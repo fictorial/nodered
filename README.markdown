@@ -20,7 +20,3 @@ New transports [may be developed easily](http://github.com/fictorial/nodered/blo
 [The protocol](http://github.com/fictorial/nodered/blob/master/doc/protocol.markdown) is simple.
 
 [Scaling out](http://github.com/fictorial/nodered/blob/master/doc/assets/NodeRedScaleOut.png) is easy.
-
-- Brian Hammond [http://fictorial.com](http://fictorial.com)
-- Copyright (C) 2010 Fictorial LLC
-- License: MIT

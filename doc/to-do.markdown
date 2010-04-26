@@ -1,48 +1,44 @@
+- support options from the command-line and pass in to a transport
+    - `'--transport=$name://ip:port?$key=$val&$key=$val...'`
+    - not real URI encoding; just looks like a URI.
+
+- specify docs for hooking into NodeRed events
+    - how does an extension ... 
+        - ... add a request handler to the dispatcher?
+        - ... add a request handler to the dispatcher?
+
+- should nickname handling be an extension?
+    - probably!
+
+- specify extensions on command line
+    - `--ext=redis://key?opt=val...`
+    - `--ext=node://moduleName?opt=val...`
+
+- load specified extensions from redis or local module
+
+- note in the per-node metadata in Redis which extensions are loaded
+
+- `LOCAL` and `CLUSTER` commands should return the loaded extensions
+
+- add a command to the built-ins that reloads redis-based extensions
+  (which is useful for development and for 0-downtime upgrades)
+
+- example extension: nick registration and authentication against redis itself
+    - new protocol requests
+        - `auth:REGISTER`
+        - `auth:LOGIN`
+    - new protocol notifications
+        - `auth:CHALLENGE`
+    - schema to store user credentials in redis
+    - hook into `NICK` command (or replace it entirely)
+
+- encapsulate the logic in the tcp transport better to allow for hooks outside of transport implementations
+
 - return the generated nickname as a system message on connection
 
 - expose more node metadata
     - list the extensions loaded
     - periodically write memory usage to redis for the node
 
-# protocol extensions
-
-- specify on command line
-- load from URIs (redis://key, node://module, kiwi://module)
-- example: nick registration and authentication against redis itself
-
-# transports
-
-- support options from the command-line and pass in to the transport
-    - `--transport=$name://ip:port?$key=$val&$key=$val...`
-
-# samples
-
-## text chat
-
-- show list of available channels in a list
-- show who is subscribed to the selected channel
-- publish to selected channel and remove the "to" input box in the publish form
-- use default text for the form input fields
-- make an inverse logo so it shows up better 
-- put each channel in its own tab
-
-## video chat
-
-- stress test; probably a very bad idea
-- grab images from webcam using flash (jquery plugin) and publish the captured frames as messages
-    - will require base64 encoding (!) the frames
-
-## games
-
-- a million ideas
-
-## collaborative document editing
-
-- upload a doc; get a uri back
-- share uri with friend over im or whatever
-- send keystrokes to each other on a channel dedicated to that doc
-
-## irc relay
-
-- just to show you can, not realistic to have 1 proxy for N users  
+- add support for seed.js packaging
 

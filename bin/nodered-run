@@ -81,6 +81,21 @@ logger.info("MAIN/TRANSPORTS  " + options.transports.map(
 logger.info("MAIN/NODEJS " + process.version);
 logger.info("MAIN/REDIS  " + JSON.stringify(options.redis));
 
+setInterval(
+  function () {
+    if (pubsub.controlClient) {
+      try {
+        var memUsage = JSON.stringify(process.memoryUsage());
+        pubsub.controlClient.hset(key, 'memUsage', memUsage,
+          function (err, reply) {
+            if (err) logger.error("MAIN  Failed to update local memory usage stat in Redis: " + err);
+          });
+      } catch (e) {
+        // We don't care.
+      }
+    }
+  }, 30000);
+
 pubsub.initRedisClients(options.redis, function () {
   flow.exec(
     function () {
@@ -123,6 +138,7 @@ pubsub.initRedisClients(options.redis, function () {
       pubsub.controlClient.hset(key, 'id', NODE_ID, this.MULTI());
       pubsub.controlClient.hset(key, 'version', config.VERSION, this.MULTI());
       pubsub.controlClient.hset(key, 'nodejsVersion', process.version, this.MULTI());
+      pubsub.controlClient.hset(key, 'systemPlatform', process.platform, this.MULTI());
       pubsub.controlClient.hset(key, 'upSince', now, this.MULTI());
       pubsub.controlClient.hset(key, 'clientCount', '0', this.MULTI());
 
