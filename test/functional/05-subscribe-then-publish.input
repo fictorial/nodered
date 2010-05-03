@@ -1,4 +1,3 @@
-[ 0, "NICK", "Brian" ]
-[ 1, "SUB", "Foobar" ]
-[ 2, "PUB", "Foobar", "Hello!" ]
-[ 3, "QUIT" ]
+{"id":1,"cmd":"SUBSCRIBE","body":["Foobar"]}
+{"id":2,"cmd":"PUBLISH","body":["Foobar","Hello!"]}
+{"id":3,"cmd":"QUIT"}

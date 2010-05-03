@@ -1,2 +1,2 @@
-[ 1, "PUB", "Foobar", "Hello!" ]
-[ 2, "QUIT" ]
+{"id":1,"cmd":"PUBLISH","body":["Foobar","Hello!"]}
+{"id":2,"cmd":"QUIT"}

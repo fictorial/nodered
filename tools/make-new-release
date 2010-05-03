@@ -1,0 +1,28 @@
+#!/bin/sh
+
+version=$(grep version seed.yml | awk '{print $2}')
+new_version=$1
+
+if [ -z $new_version ]; then
+  echo "USAGE: $0 <x.y.z>"
+  echo "e.g. $0 0.1.2 where 0.1.2 is the new version"
+  exit 1
+fi
+
+echo "creating a new release $version -> $new_version"
+
+perl -pi -e "s/version: $version/version: $new_version/" seed.yml 
+perl -pi -e "s/\"version\": \"$version\"/\"version\": \"$new_version\"/" package.json
+perl -pi -e "s/version: \"$version\"/version: \"$new_version\"/" bin/nodered.js
+
+# kiwi release nodered $new
+# 
+# git commit -m "Bump version to $new" lib/config.js seed.yml
+# git tag v$new
+# 
+# echo -n "want to push to github now? (y/n) "
+# read ans
+# if [ "$ans" == "y" ]; then
+#   git push
+#   git push --tags
+# fi

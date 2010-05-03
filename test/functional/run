@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# tests the TCP server.
+
 testhost=127.0.0.1
 testport=8080
 

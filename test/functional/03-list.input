@@ -1,5 +1,4 @@
-[ 0, "NICK", "Brian" ]
-[ 1, "SUB", "Foobar" ]
+{"id":0,"cmd":"SUBSCRIBE","body":["Foobar"]}
 # Should see "Foobar" in the output.
-[ 2, "LIST" ]
-[ 3, "QUIT" ]
+{"id":1,"cmd":"LIST"}
+{"id":2,"cmd":"QUIT"}

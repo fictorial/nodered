@@ -1,2 +1,2 @@
-[0,"cluster"]
-[1,"quit"]
+{"id":0,"cmd":"cluster"}
+{"id":1,"cmd":"quit"}

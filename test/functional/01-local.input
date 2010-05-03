@@ -1,2 +1,2 @@
-[0,"local"]
-[1,"quit"]
+{"id":0,"cmd":"local"}
+{"id":1,"cmd":"quit"}

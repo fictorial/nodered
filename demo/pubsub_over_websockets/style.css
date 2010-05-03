@@ -1,0 +1,30 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: 'TheSansMonoCd', 'TheSansMonoCd Office', monospace;
+  font-size: large;
+}
+
+input, textarea {
+  font-family: 'TheSansMonoCd', 'TheSansMonoCd Office', monospace;
+  font-size: large;
+  padding: 0.25em;
+  display: block;
+}
+
+a {
+  color: #789;
+  text-decoration: none;
+}
+
+#output {
+  background-color: #def;
+  color: #456;
+}
+
+#src {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+

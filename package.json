@@ -1,0 +1,20 @@
+{
+  "name": "nodered",
+  "description": "NodeRed is an extensible network service container for Node.js",
+  "version": "0.5.1",
+  "keywords": [ "redis", "pubsub", "server", "framework" ],
+  "author": "Brian Hammond <brian@fictorial.com>",
+  "contributors": [
+    { "name": "Brian Hammond", "web": "http://fictorial.com" },
+  ],
+  "licenses": [ "MIT" ],
+  "repositories": {
+    "type": "git",
+    "url": "http://github.com/fictorial/nodered.git"
+  },
+  "bugs": { "web": "http://github.com/fictorial/nodered/issues" },
+  "directories": { "lib": "./lib", "test": "./test" },
+  "os": [ "linux", "darwin" ],
+  "dependencies": {},
+  "engines": { "node": ">0.1.90" }
+}
