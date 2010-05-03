@@ -1,4 +1,4 @@
-![Logo](file:///Users/brian/projects/scratch/nr/doc/NodeRedLogo.png)
+![Logo](http://github.com/fictorial/nodered/raw/master/doc/logo.png)
 
 NodeRed is an extensible network service container for Node.js.
 
