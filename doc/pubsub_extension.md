@@ -52,9 +52,13 @@ and patterns are treated distinctly.
 Sent by the NodeRed instance when another client, an extension, or NodeRed
 itself publishes a message.  
 
-    <-- { "notice": { 
-            "MESSAGE": [ "$channel", "$message" ] 
-          } 
+    <-- { "notice": {
+            "message": {
+                "from":"42@127.0.0.1",
+                "msg":"hello",
+                "channel":"greetings"
+            }
+          }
         } <CRLF>
 
 ## LIST request
