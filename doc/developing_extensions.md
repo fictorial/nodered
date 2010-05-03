@@ -33,11 +33,11 @@ one for the command `FOOBAR` and another for the command `KILLME`.
       context.dispatch.add_handler({ 
         on_FOOBAR: function (client, request, callback) {
           client.respond("hello, client!");
-          callback();
+          process.nextTick(callback);
         },
         on_KILLME: function (client, request, callback) {
           client.kill("bye!");
-          callback();
+          process.nextTick(callback);
         }
       });
     };
@@ -81,7 +81,7 @@ on server shutdown.  This function has the form:
 
     exports.deinit_extension = function (context, callback) {
         // ...
-        callback();
+        process.nextTick(callback);
     };
 
 where `context` is the same context passed to `init_extension`; and 
