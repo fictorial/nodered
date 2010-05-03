@@ -2,5 +2,5 @@
   name: nodered
   description: an extensible network service container
   tags: redis pubsub server framework
-  version: 0.5.1
+  version: 0.5.2
 
