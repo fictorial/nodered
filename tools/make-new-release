@@ -15,14 +15,13 @@ perl -pi -e "s/version: $version/version: $new_version/" seed.yml
 perl -pi -e "s/\"version\": \"$version\"/\"version\": \"$new_version\"/" package.json
 perl -pi -e "s/version: \"$version\"/version: \"$new_version\"/" bin/nodered.js
 
-# kiwi release nodered $new
-# 
-# git commit -m "Bump version to $new" lib/config.js seed.yml
-# git tag v$new
-# 
-# echo -n "want to push to github now? (y/n) "
-# read ans
-# if [ "$ans" == "y" ]; then
-#   git push
-#   git push --tags
-# fi
+git commit -m "Bump version to $new_version" seed.yml package.json bin/nodered.js
+git tag v$new_version
+
+echo -n "want to push to github now? (y/n) "
+read ans
+if [ "$ans" == "y" ]; then
+  git push
+  git push --tags
+fi
+

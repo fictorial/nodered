@@ -6,10 +6,6 @@
 
     git clone git://github.com:fictorial/nodered.git
 
-### Kiwi
-
-    kiwi install nodered
-
 ### Seed.js
 
 TBD
