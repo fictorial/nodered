@@ -1,24 +1,23 @@
 #!/bin/sh
 
-version=$(grep version seed.yml | awk '{print $2}')
+version=$(grep version package.json | awk '{print $2}' | sed 's/[",]//g')
 new_version=$1
 
 if [ -z $new_version ]; then
   echo "USAGE: $0 <x.y.z>"
-  echo "e.g. $0 0.1.2 where 0.1.2 is the new version"
+  echo "  where 0.1.2 is the new version"
   exit 1
 fi
 
 echo "creating a new release $version -> $new_version"
 
-perl -pi -e "s/version: $version/version: $new_version/" seed.yml 
 perl -pi -e "s/\"version\": \"$version\"/\"version\": \"$new_version\"/" package.json
 perl -pi -e "s/version: \"$version\"/version: \"$new_version\"/" bin/nodered.js
 
-git commit -m "Bump version to $new_version" seed.yml package.json bin/nodered.js
+git commit -m "Bump version to $new_version" package.json bin/nodered.js
 git tag v$new_version
 
-echo -n "want to push to github now? (y/n) "
+echo -n "Would you like to push to github now? (y/n) "
 read ans
 if [ "$ans" == "y" ]; then
   git push
