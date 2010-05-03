@@ -27,7 +27,7 @@ configuration = {
       options: { db: 1 } 
     }
   ],
-  max_concurrent_clients: 50000,
+  max_clients: 50000,
   max_request_size: 50240,
   max_queued_requests: 100
 };

@@ -65,7 +65,7 @@ The default (annotated) config.js is shown here:
         // If there are too many clients connected, disallow 
         // further connections.
 
-        max_concurrent_clients: 50000,
+        max_clients: 50000,
 
         // If a client sends a request that is too large,
         // reset their connection.  Unit: bytes.
