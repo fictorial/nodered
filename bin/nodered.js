@@ -140,6 +140,12 @@ Client.prototype.respond = function (response) {
   this.server.write(this.socket, serialized);
 };
 
+Client.prototype.error = function (reason) {
+  var serialized = JSON.stringify({ id: this.requests[0].id, error: reason }) + "\r\n";
+  this.server.log("⇉ " + this + ": " + serialized.replace(/\r\n/g, '<crlf>'));
+  this.server.write(this.socket, serialized);
+};
+
 Client.prototype.notify = function (notice, already_serialized) {
   var serialized = already_serialized ? notice : (JSON.stringify({ notice: notice }) + "\r\n");
   this.server.log("☞ " + this + ": " + serialized.replace(/\r\n/g, '<crlf>'));
@@ -189,7 +195,7 @@ function TcpServer(ip, port, net_module, type) {
       try {
         client.parser.feed(chunk); 
       } catch (e) {
-        client.kill("feed/dispatch: " + e.message);
+        client.kill(e.message);
       }
     });
 
