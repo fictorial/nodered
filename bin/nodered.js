@@ -124,7 +124,7 @@ function Client(server, socket, callback) {
   this.socket = socket;
   this.server = server;
   this.requests = [];
-  this.id = (next_client_id++).toString(36) + '@' + socket.remoteAddress;
+  this.id = (next_client_id++).toString(36);
   this.prev_request_id = -1;
 
   our.redis.client.hincrby(our.metadata_key, 'client_count', 1, 
@@ -161,7 +161,7 @@ Client.prototype.kill = function (reason) {
 };
 
 Client.prototype.toString = function () {
-  return this.id;
+  return this.id + '@' + our.node_name;
 };
 
 
