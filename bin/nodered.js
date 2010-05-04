@@ -14,7 +14,7 @@ redis.debugMode = process.env["NODERED_DEBUG"] || false;
 // extensions.  So, NodeRed gets out of their way by not hiding anything.
 
 our = { 
-  version: "0.5.2",
+  version: "0.5.3",
   redis: {},
   servers: [],
   extensions: [],
