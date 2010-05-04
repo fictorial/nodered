@@ -1,7 +1,7 @@
 {
   "name": "nodered",
   "description": "NodeRed is an extensible network service container for Node.js",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "keywords": [ "redis", "pubsub", "server", "framework" ],
   "author": "Brian Hammond <brian@fictorial.com>",
   "contributors": [
