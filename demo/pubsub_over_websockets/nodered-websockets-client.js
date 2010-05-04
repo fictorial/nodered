@@ -1,0 +1,1 @@
+../common/js/nodered-websockets-client.js
