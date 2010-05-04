@@ -16,8 +16,7 @@ $(document).ready(function() {
   var extensions = [];
 
   function on_help () {
-    var str = "\nNodeRed PUBSUB over HTML5 WebSockets demo\n" +
-              "When connected, enter commands.\n\n" +
+    var str = "\nNodeRed PUBSUB over HTML5 WebSockets demo.\n\n" +
               "help\n" +
               "clear\n" +
               "info\n";
@@ -52,17 +51,17 @@ $(document).ready(function() {
           client.add_extension_support(extensions[i]);
 
         on_help();
+      } else {
+        output("Instance/Node Name: " + reply.node_name);
+        output("NodeRed version: " + reply.nodered_version);
+        output("Up since: " + (new Date(reply.up_since)));
+        output("Node.js version: " + reply.nodejs_version);
+        output("Redis version: " + reply.redis_version);
+        output("Connected clients: " + reply.client_count);
+        output("Servers: " + reply.servers.join(", "));
+        output("Extensions: " + reply.extensions.join(", "));
+        output("\n");
       }
-
-      output("Instance/Node Name: " + reply.node_name);
-      output("NodeRed version: " + reply.nodered_version);
-      output("Up since: " + (new Date(reply.up_since)));
-      output("Node.js version: " + reply.nodejs_version);
-      output("Redis version: " + reply.redis_version);
-      output("Connected clients: " + reply.client_count);
-      output("Servers: " + reply.servers.join(", "));
-      output("Extensions: " + reply.extensions.join(", "));
-      output("\n");
     });
   }
 
