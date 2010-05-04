@@ -25,6 +25,11 @@ configuration = {
       type: "node",
       module: "../lib/ext/pubsub", 
       options: { db: 1 } 
+    },
+    { 
+      name: "nickname",
+      type: "node",
+      module: "../lib/ext/nickname", 
     }
   ],
   max_clients: 50000,
