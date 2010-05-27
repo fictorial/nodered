@@ -17,7 +17,7 @@ perl -pi -e "s/version: \"$version\"/version: \"$new_version\"/" bin/nodered.js
 git commit -m "Bump version to $new_version" package.json bin/nodered.js
 git tag v$new_version
 
-echo -n "Would you like to push to github now? (y/n) "
+echo "Would you like to push to github now? (y/n) "
 read ans
 if [ "$ans" == "y" ]; then
   git push
