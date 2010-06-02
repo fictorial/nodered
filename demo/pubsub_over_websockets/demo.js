@@ -37,7 +37,6 @@ $(document).ready(function() {
     host = 'localhost',
     port = 8081,
     client = new NodeRedClient(),
-    retrying = false,
     first_local = true;
 
   function on_local() {
@@ -74,9 +73,6 @@ $(document).ready(function() {
       $('#action').focus();
     });
 
-    client.connected = true;
-    retrying = false;
-
     on_local();
   };
 
@@ -87,16 +83,11 @@ $(document).ready(function() {
     $('#action').disabled = true;
     $('#action').hide();
 
-    client.connected = false;
-    retrying = false;
     first_local = true;
+  };
 
-    setTimeout(function () {
-      if (client.connected || retrying) return;
-      output("☎\ttrying " + host + ":" + port + " ...");
-      retrying = true;
-      client.connect(host, port);
-    }, 10000);
+  client.on_reconnect_attempt = function (attempt_number) {
+    output("⚠\tattempting a reconnection..."); 
   };
 
   client.on_notice = function (what) { 
