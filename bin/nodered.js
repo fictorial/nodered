@@ -53,6 +53,9 @@ our.redis.ip = config.redis.ip || '127.0.0.1';
 our.redis.port = config.redis.port || 6379;
 our.redis.db = config.redis.db === undefined ? 1 : config.redis.db;
 our.redis.client = redis.createClient(our.redis.port, our.redis.ip);
+our.redis.client.addListener('noconnection', function  () {
+  die("failed to establish a connection to redis... is it up?");
+});
 
 var server_creators = { 
   tcp: require("../lib/tcp_server").create, 
